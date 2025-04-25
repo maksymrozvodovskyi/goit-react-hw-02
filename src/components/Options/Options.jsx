@@ -1,11 +1,11 @@
 import css from "./Options.module.css";
 
-export default function Option({ handleFeeedback }) {
+export default function Option({ onUpdate }) {
   return (
     <>
-      <button onClick={handleFeeedback}>Good</button>
-      <button onClick={handleFeeedback}>Neutral</button>
-      <button onClick={handleFeeedback}>Bad</button>
+      <button onClick={() => onUpdate("good")}>Good</button>
+      <button onClick={() => onUpdate("neutral")}>Neutral</button>
+      <button onClick={() => onUpdate("bad")}>Bad</button>
     </>
   );
 }

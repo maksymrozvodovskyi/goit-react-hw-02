@@ -4,6 +4,7 @@ import сss from "./App.module.css";
 import Description from "../Description/Description";
 import Options from "../Options/Options";
 import Feedback from "../Feedback/Feedback";
+import Notification from "../Notification/Notification";
 
 export default function App() {
   const [feedback, setFeedback] = useState({
@@ -12,15 +13,20 @@ export default function App() {
     bad: 0,
   });
 
-  const handleFeeedback = () => {
-    setFeedback();
+  const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
+
+  const updateFeedback = (feedbackType) => {
+    setFeedback({
+      ...feedback,
+      [feedbackType]: feedback[feedbackType] + 1,
+    });
   };
 
   return (
     <div>
       <Description />
-      <Options onUpdate={handleFeeedback} />
-      <Feedback value={feedback} />
+      <Options onUpdate={updateFeedback} />
+      {totalFeedback !== 0 ? <Feedback value={feedback} /> : <Notification />}
     </div>
   );
 }
