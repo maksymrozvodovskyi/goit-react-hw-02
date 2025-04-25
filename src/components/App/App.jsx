@@ -22,10 +22,18 @@ export default function App() {
     });
   };
 
+  const resetFeedback = () => {
+    setFeedback({ good: 0, neutral: 0, bad: 0 });
+  };
+
   return (
     <div>
       <Description />
-      <Options onUpdate={updateFeedback} />
+      <Options
+        onUpdate={updateFeedback}
+        total={totalFeedback}
+        onReset={resetFeedback}
+      />
       {totalFeedback !== 0 ? <Feedback value={feedback} /> : <Notification />}
     </div>
   );
