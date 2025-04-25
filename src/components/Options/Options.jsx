@@ -1,6 +1,3 @@
-import css from "./Options.module.css";
-import { useState } from "react";
-
 export default function Option({ onUpdate, total, onReset }) {
   return (
     <>
