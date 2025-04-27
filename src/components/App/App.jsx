@@ -12,13 +12,12 @@ export default function App() {
     if (savedFeedback !== null) {
       return JSON.parse(savedFeedback);
     }
-    return 0;
+    return { good: 0, neutral: 0, bad: 0 };
   });
 
   useEffect(() => {
-    window.localStorage.setItem("feedback", JSON.stringify(feedback)),
-      [feedback];
-  });
+    window.localStorage.setItem("feedback", JSON.stringify(feedback));
+  }, [feedback]);
 
   const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
 
